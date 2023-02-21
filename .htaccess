@@ -1,0 +1,6 @@
+# Activation de la réécriture du moteur du serveur Apache
+RewriteEngine On
+
+    # Si la racine du dossier "zinc" est chargé par un client
+    # redirigeons le automatiquement vers le dossier "public"
+    RewriteRule ^(.*)$ public/index.php
