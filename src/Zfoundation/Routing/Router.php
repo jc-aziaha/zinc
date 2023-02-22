@@ -1,9 +1,11 @@
 <?php
 namespace App\Zfoundation\Routing;
 
-    interface RouterInterface
-    {
+use App\Zfoundation\Routing\RouterInterface;
 
+    class Router implements RouterInterface
+    {
+        
         /**
          * Cette méthode du routeur lui permet de stocker les routes
          * dans un tableau tout en prenant soin de les trier
@@ -12,7 +14,10 @@ namespace App\Zfoundation\Routing;
          * @param array $controllers
          * @return void
          */
-        public function addRoutes(array $controllers) : void; 
+        public function addRoutes(array $controllers) : void
+        {
+
+        }
 
 
         /**
@@ -21,7 +26,10 @@ namespace App\Zfoundation\Routing;
          *
          * @return array|null
          */
-        public function run() : ?array;
+        public function run() : ?array
+        {
+
+        }
 
 
         /**
@@ -30,6 +38,8 @@ namespace App\Zfoundation\Routing;
          *
          * @return string
          */
-        public function generatePath(string $route_name, ?array $parameters = []) : string;
+        public function generatePath(string $route_name, ?array $parameters = []) : string
+        {
 
+        }
     }

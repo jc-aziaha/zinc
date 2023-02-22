@@ -24,7 +24,7 @@ use App\Kernel;
 
 
     // Création d'une nouvelle instance du noyau de l'application
-    $kernel = new Kernel();
+    $kernel = new Kernel($container);
     
 
     // Demander au noyau de soumettre la requête et de récupérer la réponse correspondante 

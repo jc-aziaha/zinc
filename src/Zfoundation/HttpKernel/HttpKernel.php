@@ -1,10 +1,24 @@
 <?php
 namespace App\Zfoundation\HttpKernel;
 
+use Psr\Container\ContainerInterface;
+use App\Zfoundation\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Response;
 
     abstract class HttpKernel implements HttpKernelInterface
     {
+
+        /**
+         * Cette propriété représente le conteneur de dépendances
+         *
+         * @var ContainerInterface
+         */
+        protected ContainerInterface $container;
+
+        public function __construct( ContainerInterface $container)
+        {
+            $this->container = $container;
+        }
         
         /**
          * Cette méthode du noyau lui permet de soumettre la requête
@@ -14,7 +28,9 @@ use Symfony\Component\HttpFoundation\Response;
          */
         public function handleRequest() : Response
         {
-            return new Response("Hello World");
+            $router = $this->container->get(RouterInterface::class);
+
+            dd($router);
         }
 
     }
