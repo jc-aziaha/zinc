@@ -1,4 +1,4 @@
 /vendor
 /utils.md
 
-.env
+/.env

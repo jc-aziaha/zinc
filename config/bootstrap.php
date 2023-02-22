@@ -3,6 +3,7 @@
 use Whoops\Run;
 use Dotenv\Dotenv;
 use Whoops\Handler\PrettyPageHandler;
+use Symfony\Component\HttpFoundation\Request;
 
     /**
      * ----------------------------------------------------
@@ -35,6 +36,7 @@ use Whoops\Handler\PrettyPageHandler;
 
 
     // Chargement du conteneur de dépendances
+    $container = require __DIR__ . "/di/container.php";
 
-
+    
     
