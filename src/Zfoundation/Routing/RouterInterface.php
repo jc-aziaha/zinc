@@ -12,7 +12,7 @@ namespace App\Zfoundation\Routing;
          * @param array $controllers
          * @return void
          */
-        public function addRoutes(array $controllers) : void; 
+        public function addRoutes(array $controllers = []) : void;
 
 
         /**

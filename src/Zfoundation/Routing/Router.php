@@ -2,6 +2,7 @@
 namespace App\Zfoundation\Routing;
 
 use App\Zfoundation\Routing\RouterInterface;
+use ReflectionClass;
 use Symfony\Component\HttpFoundation\Request;
 
     class Router implements RouterInterface
@@ -34,6 +35,7 @@ use Symfony\Component\HttpFoundation\Request;
         {
             $this->request     = $request;
             $this->controllers = $controllers;
+            $this->addRoutes($controllers);
         }
         
         /**
@@ -44,9 +46,37 @@ use Symfony\Component\HttpFoundation\Request;
          * @param array $controllers
          * @return void
          */
-        public function addRoutes(array $controllers) : void
+        public function addRoutes(array $controllers = []) : void
         {
+            // Pour chaque controller présent dans le tableau 
+            // des contrôleurs récupéré depuis le conteneur de dépendances
+            foreach ($controllers as $controller) 
+            {
+                // Permettre à chaque contrôleur récupéré lors du tour de boucle de faire sa propre reflexion.
+                // C'est à dire, rapporter les toutes les informations présentes dans la contrôleur.
+                $reflection_controller = new ReflectionClass($controller);
 
+
+                // Demander au contrôleur de récupérer toutes ses méthodes.
+                // Pour chacune de ses méthodes,
+                foreach ($reflection_controller->getMethods() as $reflection_method) 
+                {
+
+                    // Récupérer les attributs de chacune de ses méthodes.
+                    // Attention les attributs doivent être de type "Route"
+                    $reflection_attributes = $reflection_method->getAttributes();
+
+
+                    // Pour chaque attribut de reflexion,  
+                    // foreach ($reflection_attributes as $reflection_attribute) 
+                    // {
+                            // Instancier cet attribut de type "Route"
+                            
+                            // Sauvegarder dans le tableau à routes
+                            // tout en prenant soin de les trier en fonction de leur nom.
+                    // }
+                }
+            }
         }
 
 
@@ -58,7 +88,7 @@ use Symfony\Component\HttpFoundation\Request;
          */
         public function run() : ?array
         {
-
+            dd('run');
         }
 
 

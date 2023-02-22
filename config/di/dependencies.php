@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
         // La liste de tous les contrôleurs de l'application
         "controllers" => [
-            
+            "App\Controller\WelcomeController"
         ],
 
         RouterInterface::class => DI\create(Router::class)->constructor(DI\get(Request::class), DI\get("controllers")),

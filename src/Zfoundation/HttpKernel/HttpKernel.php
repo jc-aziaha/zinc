@@ -28,6 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
          */
         public function handleRequest() : Response
         {
+            // Le noyau récupère le routeur
             $router = $this->container->get(RouterInterface::class);
 
             // Si le routeur détecte qu'il n'y a aucun contrôleur référencé dans le conteneur de dépendances
@@ -38,6 +39,7 @@ use Symfony\Component\HttpFoundation\Response;
 
             // Dans le cas contraire, le noyau demande au router de s'éxécuter
             // et de lui retourner une réponse
+            $router_response = $router->run();
 
 
             // Le noyau exécute le contrôleur et récupère sa réponse

@@ -1,0 +1,1 @@
+- Symfony var dumper not showing all data 
